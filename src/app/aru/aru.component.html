@@ -1,0 +1,14 @@
+<div>
+    Ár: {{price | currency}}
+</div>
+<div>
+    Forint: {{salary | salaryhuf}}
+</div>
+<div>
+    Felhasználó: {{(isAdmin ? 'Admin' : 'User') | uppercase}}
+</div>
+<div>
+    Dátum: {{dateNow | date: "YYYY-MM-DD hh-mm-ss" }}
+</div>
+
+

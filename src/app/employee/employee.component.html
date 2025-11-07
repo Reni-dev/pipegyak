@@ -1,0 +1,39 @@
+<h2>Dolgozók</h2>
+
+@if(showFilters){
+    <div>
+        <input [formControl]="filteredName" placeholder="Name" type="text">
+        <input [formControl]="filteredCity" placeholder="City" type="text">
+    </div>
+    <button (click)="toggleFilter()">
+        Szűrők eltűntetése
+    </button>   
+}
+
+@if(!showFilters){
+    <button (click)="toggleFilter()">
+        Szűrők megjelenítése
+    </button>
+}
+<button (click)="showAlert()">Alert</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(employee of filteredEmpList | empfilter:{name: filteredName.value, city: filteredCity.value}; track employee.id){
+            <tr>
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.city}}</td>
+                <td>{{employee.salary}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
